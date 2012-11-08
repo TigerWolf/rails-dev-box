@@ -44,7 +44,10 @@ class { 'install_mysql': }
 class install_postgres {
   class { 'postgresql': }
 
-  class { 'postgresql::server': }
+class {'postgresql::server':
+    listen => ['*' ],
+    acls   => ['host all all 10.0.2.0/32 allow', ],
+
 
   pg_user { 'vagrant':
     ensure    => present,
@@ -60,8 +63,21 @@ class install_postgres {
 class { 'install_postgres': }
 
 class install_core_packages {
+<<<<<<< HEAD
   package { ['build-essential', 'vim', 'ruby1.9.3']:
     ensure => installed
+=======
+  if !defined(Package['build-essential']) {
+    package { 'build-essential':
+      ensure => installed
+    }
+  }
+
+  if !defined(Package['git-core']) {
+    package { 'git-core':
+      ensure => installed
+    }
+>>>>>>> afb3da55e2aa1c2d74b3bccff994ef65f7894233
   }
 }
 class { 'install_core_packages': }
@@ -79,11 +95,14 @@ class install_rbenv {
     group => $user,
     home => $home
   }
+<<<<<<< HEAD
 
   rbenv::compile { '1.9.3-p194':
     user => $user,
     home => $home
   }
+=======
+>>>>>>> afb3da55e2aa1c2d74b3bccff994ef65f7894233
 }
 class { 'install_rbenv': }
 
@@ -101,5 +120,12 @@ class { 'setup_env': }
 #class { 'nodejs':
 #  version => '0.8.8',
 #}
+
+class install_execjs_runtime {
+  package { 'nodejs':
+    ensure => installed
+  }
+}
+class { 'install_execjs_runtime': }
 
 class { 'memcached': }

@@ -43,7 +43,13 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 * System dependencies for nokogiri, sqlite3, mysql, mysql2, and pg
 
+<<<<<<< HEAD
 * therubyracer
+=======
+* Databases and users needed to run the Active Record test suite
+
+* Node.js for the asset pipeline
+>>>>>>> afb3da55e2aa1c2d74b3bccff994ef65f7894233
 
 * Memcached
 
