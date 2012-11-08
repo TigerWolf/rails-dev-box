@@ -57,7 +57,10 @@ class { 'install_mysql': }
 class install_postgres {
   class { 'postgresql': }
 
-  class { 'postgresql::server': }
+class {'postgresql::server':
+    listen => ['*' ],
+    acls   => ['host all all 10.0.2.0/32 md5', ],
+}
 
   pg_database { $ar_databases:
     ensure   => present,
