@@ -59,8 +59,8 @@ class install_postgres {
 
 class {'postgresql::server':
     listen => ['*' ],
-    acls   => ['host all all 10.0.2.0/32 md5', ],
-}
+    acls   => ['host all all 10.0.2.0/32 allow', ],
+
 
   pg_database { $ar_databases:
     ensure   => present,
