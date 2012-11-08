@@ -98,8 +98,8 @@ class setup_env {
 }
 class { 'setup_env': }
 
-class { 'nodejs':
-  version => '0.8.8',
-}
+#class { 'nodejs':
+#  version => '0.8.8',
+#}
 
 class { 'memcached': }
