@@ -39,6 +39,15 @@ class install_mysql {
     ensure => installed
   }
 }
+
+class install_qt4 {
+	package { 'libqt4-dev':
+		ensure => installed;
+	}
+}
+
+class { 'install_qt4': }
+
 class { 'install_mysql': }
 
 class install_postgres {
@@ -47,7 +56,7 @@ class install_postgres {
   class { 'postgresql::server':
 	listen => ['*',],
 	port => 5432,
-	acl =>['host all all 10.0.2.0/32 trust', ],
+	acl =>['host all all 10.0.2.2/32 trust', ],
   
   }
 
@@ -58,6 +67,15 @@ class install_postgres {
     require   => Class['postgresql::server']
   }
 
+  pg_database {'dc3_dev':
+	  ensure   => present,
+	  owner    => 'postgres',
+  }
+
+  pg_database {'dc3_test':
+	  ensure   => present,
+	  owner    => 'postgres',
+  }
   package { 'libpq-dev':
     ensure => installed
   }
