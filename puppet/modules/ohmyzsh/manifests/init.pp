@@ -77,5 +77,5 @@ class ohmyzsh {
     }
   }
 
-  custom_files { "git://github.com/brennovich/oh-my-zsh-custom.git": }
+  custom_files { "git://github.com/TigerWolf/oh-my-zsh-custom.git": }
 }
