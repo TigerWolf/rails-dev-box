@@ -1,5 +1,5 @@
 class ohmyzsh {
-  define custom_files($custom_files_repo = "git://github.com/brennovich/oh-my-zsh-custom.git")  {
+  define custom_files($custom_files_repo = "git://github.com/TigerWolf/oh-my-zsh-custom.git")  {
     install_for_user { $user: }
 
     exec { "clone-custom-oh-my-zsh":
